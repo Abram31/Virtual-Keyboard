@@ -1,0 +1,97 @@
+.wrapper {
+        max-width: 704px;
+        height: 100vh;
+        background-color: red;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+
+        .wrapper-text-area {
+                width: 100%;
+        }
+
+        .wrapper-keyboard {
+                max-height: 250px;
+                width: 704px;
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+
+                .keyboard-first-row,
+                .keyboard-second-row,
+                .keyboard-third-row,
+                .keyboard-fourth-row,
+                .keyboard-fifth-row {
+                        display: flex;
+                        gap: 5px;
+                }
+
+                .button {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        height: 40px;
+                        width: 40px;
+                        border: 2px solid $border-color;
+                        border-radius: 5px;
+                }
+
+                .button-backspase {
+                        width: fit-content;
+                }
+
+                .button-tab {
+                        width: 50px;
+                }
+
+                .button-capslock {
+                        text-align: center;
+                        width: 55px;
+                }
+
+                .button-enter {
+                        width: 97px;
+                }
+
+                .button-shift {
+                        width: 63px;
+                }
+                .right-shift{
+                        width: 89px;
+                }
+                .button-win {
+                        background-position: center;
+                        background-size: cover;
+                        width: 40%;
+                        height: 40%;
+                        background-image: url(./assets/svg/brandico_win.svg);
+                }
+                .button-space {
+                        width: 308px;
+                }
+                .button-arrow-up,
+                .button-arrow-left,
+                .button-arrow-down,
+                .button-arrow-right {
+                        background-position: center;
+                        background-size: cover;
+                        width: 60%;
+                        height: 80%;
+                }
+                .button-arrow-up {
+                        background-image: url(./assets/svg/entypo_arrow-up.svg);
+                }
+                .button-arrow-left {
+                        background-image: url(./assets/svg/entypo_arrow-left.svg);
+                }
+                .button-arrow-right {
+                        background-image: url(./assets/svg/entypo_arrow-right.svg);
+                }
+                .button-arrow-down {
+                        background-image: url(./assets/svg/entypo_arrow-down.svg);
+                }
+                .hide {
+                        display: none;
+                }
+        }
+}

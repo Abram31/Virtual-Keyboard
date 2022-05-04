@@ -70,6 +70,8 @@ body {
   width: 40px;
   border: 2px solid black;
   border-radius: 5px;
+  -webkit-transition: .7s;
+  transition: .7s;
 }
 
 .wrapper .wrapper-keyboard .button-backspase {
@@ -139,4 +141,49 @@ body {
 
 .wrapper .wrapper-keyboard .hide {
   display: none;
+}
+
+.wrapper .wrapper-keyboard .animation-button {
+  -webkit-animation: buttons ease-in-out .7s;
+          animation: buttons ease-in-out .7s;
+}
+
+@-webkit-keyframes buttons {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    border-radius: 5px;
+  }
+  50% {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+    border-radius: 20px;
+    background-color: #6289bd;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    border-radius: 5px;
+    background-color: none;
+  }
+}
+
+@keyframes buttons {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    border-radius: 5px;
+  }
+  50% {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+    border-radius: 20px;
+    background-color: #6289bd;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    border-radius: 5px;
+    background-color: none;
+  }
 }

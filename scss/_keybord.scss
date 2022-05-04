@@ -34,6 +34,9 @@
                         width: 40px;
                         border: 2px solid $border-color;
                         border-radius: 5px;
+                        transition: .7s;
+
+                       
                 }
 
                 .button-backspase {
@@ -93,5 +96,29 @@
                 .hide {
                         display: none;
                 }
+
+                .animation-button {
+                        animation: buttons ease-in-out .7s;
+                }
+                
+                @keyframes buttons {
+                        0% {
+                               transform: scale(1);
+                                border-radius: 5px;
+                        }
+                
+                        50% {
+                               transform: scale(0.8);
+                                border-radius: 20px;
+                                background-color: $button-bacground-color;
+                        }
+                        100% {
+                                transform: scale(1);
+                                border-radius: 5px;
+                                background-color: none;
+                        }
+                }
         }
+
+        
 }

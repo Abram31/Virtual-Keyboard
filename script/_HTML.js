@@ -46,26 +46,26 @@ addKeyBoard = () => {
     const firstRow = `
     <div class="keyboard-first-row">
     <div class="button" id = "Backquote">
-        <span class="letter-en">
-        <span class="bottom-font">\`\</span>
-        <span class="top-font hide">~</span>
+        
+        <span class="sign">\`\</span>
+        <span class="shift-sign-en hide">~</span>
         </span >
         <span class="letter-ru hide">
             <span class="letter-ru">ё</span>
         </span>
     </div >
-    <div class="button" id = "Digit1"><span class="past-number">1</span><span class="shift-number hide">!</span></div>
-    <div class="button" id = "Digit2"><span class="past-number">2</span><span class="shift-number hide">@</span></div>
-    <div class="button" id = "Digit3"><span class="past-number">3</span><span class="shift-number hide">#</span></div>
-    <div class="button" id = "Digit4"><span class="past-number">4</span><span class="shift-number hide">$</span></div>
-    <div class="button" id = "Digit5"><span class="past-number">5</span><span class="shift-number hide">%</span></div>
-    <div class="button" id = "Digit6"><span class="past-number">6</span><span class="shift-number hide">^</span></div>
-    <div class="button" id = "Digit7"><span class="past-number">7</span><span class="shift-number hide">&</span></div>
-    <div class="button" id = "Digit8"><span class="past-number">8</span><span class="shift-number hide">*</span></div>
-    <div class="button" id = "Digit9"><span class="past-number">9</span><span class="shift-number hide">(</span></div>
-    <div class="button" id = "Digit0"><span class="past-number">0</span><span class="shift-number hide">)</span></div>
-    <div class="button" id = "Minus"><span class="past-number">-</span><spa class="shift-number hide">_</span></div>
-    <div class="button" id = "Equal"><span class="past-number">=</span><spa class="shift-number hide">+</span></div>
+    <div class="button" id = "Digit1"><span class="past-number">1</span><span class="shift-sign-en hide">!</span></div>
+    <div class="button" id = "Digit2"><span class="past-number">2</span><span class="shift-sign-en hide">@</span><span class="shift-sign-ru hide">"</span></div>
+    <div class="button" id = "Digit3"><span class="past-number">3</span><span class="shift-sign-en hide">#</span><span class="shift-sign-ru hide">№</span></div>
+    <div class="button" id = "Digit4"><span class="past-number">4</span><span class="shift-sign-en hide">$</span><span class="shift-sign-ru hide">;</span></div>
+    <div class="button" id = "Digit5"><span class="past-number">5</span><span class="shift-sign-en hide">%</span></div>
+    <div class="button" id = "Digit6"><span class="past-number">6</span><span class="shift-sign-en hide">^</span><span class="shift-sign-ru hide">:</span></div>
+    <div class="button" id = "Digit7"><span class="past-number">7</span><span class="shift-sign-en hide">&</span><span class="shift-sign-ru hide">?</span></div>
+    <div class="button" id = "Digit8"><span class="past-number">8</span><span class="shift-sign-en hide">*</span></div>
+    <div class="button" id = "Digit9"><span class="past-number">9</span><span class="shift-sign-en hide">(</span></div>
+    <div class="button" id = "Digit0"><span class="past-number">0</span><span class="shift-sign-en hide">)</span></div>
+    <div class="button" id = "Minus"><span class="past-number">-</span><span class="shift-sign-en hide">_</span></div>
+    <div class="button" id = "Equal"><span class="past-number">=</span><span class="shift-sign-en hide">+</span></div>
     <div class="button button-backspase" id = "Backspace">Backspase</div>
 </div >`;
 
@@ -85,9 +85,9 @@ const secondRow = `
 <div class="button" id = "KeyI"><span class="letter-en">i</span><span class="letter-ru hide">ш</span></div>
 <div class="button" id = "KeyO"><span class="letter-en">o</span><span class="letter-ru hide">щ</span></div>
 <div class="button" id = "KeyP"><span class="letter-en">p</span><span class="letter-ru hide">з</span></div>
-<div class="button" id = "BracketLeft"><span class="sign">[</span><span class="shift-sign hide">{</span><span class="letter-ru hide">х</span></div>
-<div class="button" id = "BracketRight"><span class="sign">]</span><span class="shift-sign hide">}</span><span class="letter-ru hide">ъ</span></div>
-<div class="button" id = "Backslash"><span class="sign">\\\</span><span class="shift-sign hide">|</span><span class="shift-sign-ru hide">/</span></div>
+<div class="button" id = "BracketLeft"><span class="sign">[</span><span class="shift-sign-en hide">{</span><span class="letter-ru hide">х</span></div>
+<div class="button" id = "BracketRight"><span class="sign">]</span><span class="shift-sign-en hide">}</span><span class="letter-ru hide">ъ</span></div>
+<div class="button" id = "Backslash"><span class="sign">\\\</span><span class="shift-sign-en hide">|</span><span class="shift-sign-ru hide">/</span></div>
 <div class="button" id = "Delete"><span class="delete">Del</span></div>
 
 </div>`;
@@ -106,8 +106,8 @@ const secondRow = `
     <div class="button" id = "KeyJ"><span class="letter-en">j</span><span class="letter-ru hide">о</span></div>
     <div class="button" id = "KeyK"><span class="letter-en">k</span><span class="letter-ru hide">л</span></div>
     <div class="button" id = "KeyL"><span class="letter-en">l</span><span class="letter-ru hide">д</span></div>
-    <div class="button" id = "Semicolon"><span class="sign">;</span><span class="shift-sign hide">:</span><span class="letter-ru hide">ж</span></div>
-    <div class="button" id = "Quote"><span class="sign">'</span><span class="shift-sign hide">"</span><span class="letter-ru hide">э</span></div>
+    <div class="button" id = "Semicolon"><span class="sign">;</span><span class="shift-sign-en hide">:</span><span class="letter-ru hide">ж</span></div>
+    <div class="button" id = "Quote"><span class="sign">'</span><span class="shift-sign-en hide">"</span><span class="letter-ru hide">э</span></div>
     <div class="button button-enter" id = "Enter"><span>Enter</span></div>
     
     </div>`;
@@ -124,9 +124,9 @@ const secondRow = `
     <div class="button" id = "KeyB"><span class="letter-en">b</span><span class="letter-ru hide">и</span></div>
     <div class="button" id = "KeyN"><span class="letter-en">n</span><span class="letter-ru hide">т</span></div>
     <div class="button" id = "KeyM"><span class="letter-en">m</span><span class="letter-ru hide">ь</span></div>
-    <div class="button" id ="Comma"><span class="sign">,</span><span class="shift-sign hide"><</span><span class="letter-ru hide">б</span></div>
-    <div class="button" id ="Period"><span class="sign">.</span><span class="shift-sign hide">></span><span class="letter-ru hide">ю</span></div>
-    <div class="button" id ="Slash"><span class="sign">/</span><span class="shift-sign hide">?</span></div>
+    <div class="button" id ="Comma"><span class="sign">,</span><span class="shift-sign-en hide"><</span><span class="letter-ru hide">б</span></div>
+    <div class="button" id ="Period"><span class="sign">.</span><span class="shift-sign-en hide">></span><span class="letter-ru hide">ю</span></div>
+    <div class="button" id ="Slash"><span class="sign">/</span><span class="shift-sign-en hide">?</span></div>
     <div class="button" id = "ArrowUp"><span class="button-arrow-up"></span></div>
     <div class="button right-shift" id = "ShiftRight"><span>Shift</span></div>
 </div> `;   

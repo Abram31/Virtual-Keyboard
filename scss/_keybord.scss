@@ -36,6 +36,11 @@
                         border-radius: 5px;
                         transition: .7s;
 
+
+                        & span {
+                                pointer-events: none;
+                        }
+
                        
                 }
 
@@ -97,21 +102,41 @@
                         display: none;
                 }
 
-                .animation-button {
-                        animation: buttons ease-in-out .7s;
+                .animation-button-in {
+                        // animation: buttons-in ease-in-out 1s;
+                        transform: scale(0.8);
+                        border-radius: 20px;
+                        background-color: $button-bacground-color;
+                }
+                .animation-button-out {
+                        transform: scale(1);
+                        border-radius: 5px;
+                        background-color: none;
+                        // animation: buttons-out ease-in-out .7s;
                 }
                 
-                @keyframes buttons {
+                @keyframes buttons-in {
                         0% {
                                transform: scale(1);
                                 border-radius: 5px;
                         }
                 
-                        50% {
+                        100% {
                                transform: scale(0.8);
                                 border-radius: 20px;
                                 background-color: $button-bacground-color;
                         }
+                        
+                }
+
+                @keyframes buttons-out {
+                        0% {
+                                transform: scale(0.8);
+                                border-radius: 20px;
+                                background-color: $button-bacground-color;
+                        }
+                
+                                       
                         100% {
                                 transform: scale(1);
                                 border-radius: 5px;

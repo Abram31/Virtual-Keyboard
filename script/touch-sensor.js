@@ -1,4 +1,4 @@
-import { keyboardWorkLogic } from "./_keyboard.js";
+import { keyboardWorkLogic } from "./keyboard.js";
 import { lettersEn, lettersRu } from "./main.js";
 
 

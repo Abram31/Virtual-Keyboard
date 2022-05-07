@@ -1,6 +1,6 @@
 
 import { buttons, lettersEn, lettersRu } from "./main.js";
-import { wrapper } from "./_HTML.js";
+import { wrapper } from "./HTML.js";
 // import { wrapper } from "./_HTML";
 
 export class keyboardWorkLogic {

@@ -8,8 +8,9 @@ export const wrapperKeyboard = document.getElementsByClassName("wrapper-keyboard
 let element;
 
 class Touch extends keyboardWorkLogic {
-    constructor() {
-        super();
+    constructor(language) {
+        super(language);
+        this.language = this.language;
     }
 
     touchEvents(event) {
@@ -25,11 +26,10 @@ class Touch extends keyboardWorkLogic {
         }
 
         if ((event.target.id === "ShiftRight" && event.type === "mousedown") || (event.target.id === "ShiftLeft" && event.type === "mousedown")) {
+            console.log(this.language)
             this.changeShiftElements(event);
         }
 
-
-        // this.buttonsTouchHighlighting(event);
     }
     addLettersTextarea(event) {
         let targetElement = event.target;
@@ -99,33 +99,12 @@ class Touch extends keyboardWorkLogic {
             text.splice(position, 0, "\n");
             textArea.value = text.join("");
             this.input = text.join("");
-            textArea.setSelectionRange(position+1, position+1);
+            textArea.setSelectionRange(position + 1, position + 1);
 
         }
         console.log(event.target.id);
 
     }
-
-    // capsLockFunctionTouch() {
-    //     if (this.capsLock === true) {
-    //         lettersEn.forEach(element => {
-    //             element.innerText = element.innerText.toLowerCase();
-    //         });
-    //         lettersRu.forEach(element => {
-    //             element.innerText = element.innerText.toLowerCase();
-    //         });
-    //         this.capsLock = false;
-    //     } else if (this.capsLock === false) {
-    //         lettersEn.forEach(element => {
-    //             element.innerText = element.innerText.toUpperCase();
-    //         });
-    //         lettersRu.forEach(element => {
-    //             element.innerText = element.innerText.toUpperCase();
-    //         });
-    //         this.capsLock = true;
-
-    //     }
-    // }
 
 }
 

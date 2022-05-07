@@ -23,6 +23,9 @@ window.onload = () => {
     document.addEventListener("keydown", buttonsEventsBind);
 
     wrapperKeyboard[0].addEventListener("click", touchEventsBind);
+    wrapperKeyboard[0].addEventListener("mousedown", touchEventsBind);
+
+    
 };
 
 

@@ -1,16 +1,19 @@
 .wrapper {
         max-width: 704px;
         height: 100vh;
-        background-color: red;
+        background-color: #193B59;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
 
         .wrapper-text-area {
                 width: 100%;
+                color: #d4a15d;
+                background-color: rgba(64, 64, 63, 0.55);
         }
 
         .wrapper-keyboard {
+                color: #D6A057;
                 max-height: 250px;
                 width: 704px;
                 display: flex;
@@ -34,11 +37,20 @@
                         width: 40px;
                         border: 2px solid $border-color;
                         border-radius: 5px;
+                        box-shadow: 7px 4px 3px #050505;
                         transition: .7s;
+                        cursor: pointer;
+
 
 
                         & span {
                                 pointer-events: none;
+                        }
+
+                        &:active {
+                                transform: scale(0.8);
+                                border-radius: 20px;
+                                background-color: $button-bacground-color;
                         }
 
                        
@@ -145,5 +157,7 @@
                 }
         }
 
-        
+        .change-language {
+                text-align: center;
+                }
 }

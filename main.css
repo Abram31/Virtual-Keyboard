@@ -1,7 +1,7 @@
 body {
   width: 100%;
   height: 100vh;
-  background-color: #b87575;
+  background-color: #193B59;
   margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -17,7 +17,7 @@ body {
 .wrapper {
   max-width: 704px;
   height: 100vh;
-  background-color: red;
+  background-color: #193B59;
   margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -30,9 +30,12 @@ body {
 
 .wrapper .wrapper-text-area {
   width: 100%;
+  color: #d4a15d;
+  background-color: rgba(64, 64, 63, 0.55);
 }
 
 .wrapper .wrapper-keyboard {
+  color: #D6A057;
   max-height: 250px;
   width: 704px;
   display: -webkit-box;
@@ -70,12 +73,22 @@ body {
   width: 40px;
   border: 2px solid black;
   border-radius: 5px;
+  -webkit-box-shadow: 7px 4px 3px #050505;
+          box-shadow: 7px 4px 3px #050505;
   -webkit-transition: .7s;
   transition: .7s;
+  cursor: pointer;
 }
 
 .wrapper .wrapper-keyboard .button span {
   pointer-events: none;
+}
+
+.wrapper .wrapper-keyboard .button:active {
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+  border-radius: 20px;
+  background-color: #6289bd;
 }
 
 .wrapper .wrapper-keyboard .button-backspase {
@@ -217,4 +230,8 @@ body {
     border-radius: 5px;
     background-color: none;
   }
+}
+
+.wrapper .change-language {
+  text-align: center;
 }

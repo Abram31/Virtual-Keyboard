@@ -25,7 +25,7 @@ export class keyboardWorkLogic {
     buttonsEvents(event) {
         buttonsHighlighting(event);
         
-        if (event.code != "Delete" && event.code != "Backspace" && event.code != "Enter") {
+        if (event.code != "Delete" && event.code != "Backspace" && event.code != "Enter" && event.code != "Space") {
             event.preventDefault();
             if (event.code === "CapsLock") {
                 this.capsLockFunction();
@@ -59,8 +59,8 @@ export class keyboardWorkLogic {
 
     addingSymbols (event) {
         const textArea = document.getElementsByTagName("textarea")[0];
-
-        if (event.code != "Tab" && event.code != "ShiftLeft" && event.code != "ShiftRight" && event.code != "ControlLeft" && event.code != "AltLeft" && event.code != "ControlRight" && event.code != "AltRight") {
+        console.log(textArea);
+        if (event.code != "CapsLock" && event.code != "Tab" && event.code != "ShiftLeft" && event.code != "ShiftRight" && event.code != "ControlLeft" && event.code != "AltLeft" && event.code != "ControlRight" && event.code != "AltRight") {
             buttons.forEach(button => {
                 if (button.id === event.code) {
                     button.childNodes.forEach(child => {
@@ -237,7 +237,7 @@ export class keyboardWorkLogic {
 
 
             let caseDownAfterClick = (event) => {
-                if (event.key === "Shift") {
+                if (event.key === "Shift" || event.target.id === "ShiftRight" || event.target.id === "ShiftLeft") {
                     const englishSigns = wrapper[0].querySelectorAll(".shift-sign-en");
                     englishSigns.forEach(element => {
                         element.classList.add("hide");
@@ -261,12 +261,19 @@ export class keyboardWorkLogic {
                             element.innerText = element.innerText.toLowerCase();
                         }
                     });
+                    if (event.target.id === "ShiftRight" || event.target.id === "ShiftLeft") {
+                        event.target.removeEventListener("mouseup", caseDownAfterClick);
 
-                    event.target.removeEventListener("keyup", caseDownAfterClick);
+                    } else {
+                        event.target.removeEventListener("keyup", caseDownAfterClick);
+
+                    }
                 }
             };
+            if (event.target.id === "ShiftRight" || event.target.id === "ShiftLeft") {
+                event.target.addEventListener("mouseup", caseDownAfterClick);
 
-            console.log(event.target);
+            }
             event.target.addEventListener("keyup", caseDownAfterClick);
         }
 
@@ -358,19 +365,19 @@ export class keyboardWorkLogic {
 
     arrowOutput(event) {
         const textArea = document.getElementsByTagName("textarea")[0];
-        if (event.code === "ArrowLeft") {
+        if (event.code === "ArrowLeft" || event.target.id === "ArrowLeft") {
             this.input += "←";
             textArea.value = this.input;
         }
-        if (event.code === "ArrowRight" ) {
+        if (event.code === "ArrowRight" || event.target.id === "ArrowRight") {
             this.input += "→";
             textArea.value = this.input;
         }
-        if (event.code === "ArrowUp") {
+        if (event.code === "ArrowUp" || event.target.id === "ArrowUp") {
             this.input += "↑";
             textArea.value = this.input;
         }
-        if (event.code === "ArrowDown") {
+        if (event.code === "ArrowDown" || event.target.id === "ArrowDown") {
             this.input += "↓";
             textArea.value = this.input;
         }

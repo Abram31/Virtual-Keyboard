@@ -1,5 +1,5 @@
-import {  keyboardWorkLogic } from "./_keyboard.js";
-import { buttons } from "./main.js";
+import { keyboardWorkLogic } from "./_keyboard.js";
+import { lettersEn, lettersRu } from "./main.js";
 
 
 export const wrapperKeyboard = document.getElementsByClassName("wrapper-keyboard");
@@ -13,16 +13,29 @@ class Touch extends keyboardWorkLogic {
     }
 
     touchEvents(event) {
-        console.log(event);
-        this.addLettersTextarea(event);
+        if (event.type === "click") {
+            this.addLettersTextarea(event);
+            console.log(event);
+            if (event.target.id === "ArrowLeft" || event.target.id === "ArrowRight" || event.target.id === "ArrowUp" || event.target.id === "ArrowDown") {
+                this.arrowOutput(event);
+            }
+            if (event.target.id === "CapsLock" && event.type === "click") {
+                this.capsLockFunction(event);
+            }
+        }
+
+        if ((event.target.id === "ShiftRight" && event.type === "mousedown") || (event.target.id === "ShiftLeft" && event.type === "mousedown")) {
+            this.changeShiftElements(event);
+        }
+
+
         // this.buttonsTouchHighlighting(event);
     }
     addLettersTextarea(event) {
-        console.log(event.target.id);
         let targetElement = event.target;
         const textArea = document.getElementsByTagName("textarea")[0];
 
-        if (event.target.id != "Tab" && event.target.id != "CapsLock" && event.target.id != "Enter" && event.target.id != "Delete" && event.target.id != "Backspace" && event.target.id != "ShiftLeft" && event.target.id != "ShiftRight" && event.target.id != "ControlLeft" && event.target.id != "AltLeft" && event.target.id != "ControlRight" && event.target.id != "AltRight") {
+        if (event.target.id != "Space" && event.target.id != "Tab" && event.target.id != "CapsLock" && event.target.id != "Enter" && event.target.id != "Delete" && event.target.id != "Backspace" && event.target.id != "ShiftLeft" && event.target.id != "ShiftRight" && event.target.id != "ControlLeft" && event.target.id != "AltLeft" && event.target.id != "ControlRight" && event.target.id != "AltRight") {
 
             if (targetElement.classList.contains("button")) {
                 targetElement.childNodes.forEach(element => {
@@ -36,45 +49,82 @@ class Touch extends keyboardWorkLogic {
                             textArea.setSelectionRange(position + 1, position + 1);
 
                         } else {
-                            this.input += element.innerText;
-                            textArea.value = this.input;
+
+                            textArea.value += element.innerText;
+                            this.input = textArea.value;
                         }
                     }
                 });
             }
         } else if (event.target.id === "Tab") {
+            let text;
             const position = textArea.selectionStart;
-            this.input = this.input.split("");
-            this.input.splice(position, 0, "  ");
-            this.input = this.input.join("");
-            textArea.value = this.input;
+            text = textArea.value.split("");
+            text.splice(position, 0, "  ");
+            textArea.value = text.join("");
+            this.input = text.join("");
             textArea.setSelectionRange(position + 2, position + 2);
 
+        } else if (event.target.id === "Space") {
+            let text;
+            const position = textArea.selectionStart;
+            text = textArea.value.split("");
+            text.splice(position, 0, " ");
+            textArea.value = text.join("");
+            this.input = text.join("");
+            textArea.setSelectionRange(position + 1, position + 1);
+
+        } else if (event.target.id === "Backspace") {
+            let text;
+            const position = textArea.selectionStart;
+            text = textArea.value.split("");
+            text.splice(position - 1, 1);
+            textArea.value = text.join("");
+            this.input = text.join("");
+            textArea.setSelectionRange(position - 1, position - 1);
+
+        } else if (event.target.id === "Delete") {
+            let text;
+            const position = textArea.selectionStart;
+            text = textArea.value.split("");
+            text.splice(position, 1);
+            textArea.value = text.join("");
+            this.input = text.join("");
+            textArea.setSelectionRange(position, position);
+
+        } else if (event.target.id === "Enter") {
+            let text;
+            const position = textArea.selectionStart;
+            text = textArea.value.split("");
+            text.splice(position, 0, "\n");
+            textArea.value = text.join("");
+            this.input = text.join("");
+            textArea.setSelectionRange(position+1, position+1);
+
         }
+        console.log(event.target.id);
 
     }
 
-    // buttonsTouchHighlighting(event) {
-    //     buttons.forEach(element => {
-    //         if (element.id === event.target.id) {
-    //             element.classList.add("animation-button-in");
-    //             // element.addEventListener("animationend", () => element.classList.remove("animation-button-in"));
+    // capsLockFunctionTouch() {
+    //     if (this.capsLock === true) {
+    //         lettersEn.forEach(element => {
+    //             element.innerText = element.innerText.toLowerCase();
+    //         });
+    //         lettersRu.forEach(element => {
+    //             element.innerText = element.innerText.toLowerCase();
+    //         });
+    //         this.capsLock = false;
+    //     } else if (this.capsLock === false) {
+    //         lettersEn.forEach(element => {
+    //             element.innerText = element.innerText.toUpperCase();
+    //         });
+    //         lettersRu.forEach(element => {
+    //             element.innerText = element.innerText.toUpperCase();
+    //         });
+    //         this.capsLock = true;
 
-    //             let removeEventHighlihting = () => {
-    //                 element.classList.remove("animation-button-in");
-    //                 element.classList.add("animation-button-out");
-    //                 element.addEventListener("transitionend", () => {
-    //                     element.classList.remove("animation-button-out");
-    //                     event.target.removeEventListener("keyup", removeEventHighlihting);
-    //                 });
-    //                 // element.removeEventListener("keyup", removeEventHighlihting);
-    //             };
-
-    //             event.target.addEventListener("keyup", removeEventHighlihting);
-
-    //         }
-
-    //     });
+    //     }
     // }
 
 }

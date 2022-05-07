@@ -148,7 +148,14 @@ const secondRow = `
 
     wrapperKeyBoardBlock.insertAdjacentHTML("beforeend", fifthRow);
 
+    const changeLang =`
+    <div class = "change-language"> Клавиатура создана в операционной системе Windows </div>
+    <div class = "change-language">Смена языка осуществляется комбинацией клавиш Ctrl + Alt</div>`;
+
+    wrapperKeyBoardBlock.insertAdjacentHTML("beforeend", changeLang);
+
 };
+
 }
 
 const innerHTML = new addHTML();

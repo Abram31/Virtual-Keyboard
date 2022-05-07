@@ -1,5 +1,5 @@
 
-import { addBasicStructure, addKeyBoard, addTextArea, wrapper } from "./_HTML.js";
+import { addBasicStructure, addKeyBoard, addTextArea, wrapper } from "./HTML.js";
 import { buttonsEventsBind} from "./_keyboard.js";
 import { touchEventsBind, wrapperKeyboard} from "./_touch-sensor.js";
 

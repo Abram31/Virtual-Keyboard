@@ -1,9 +1,9 @@
 
 import { addBasicStructure, addKeyBoard, addTextArea, wrapper } from "./HTML.js";
-import { buttonsEventsBind} from "./keyboard.js";
+import { buttonsEventsBind, changeLettersBind, keyboardWork} from "./keyboard.js";
 import { touchEventsBind, wrapperKeyboard} from "./touch-sensor.js";
 
-
+window.addEventListener("unload", () => localStorage.setItem("language", keyboardWork.language))
 
 addBasicStructure();
 addTextArea();
@@ -25,6 +25,8 @@ window.onload = () => {
     wrapperKeyboard[0].addEventListener("click", touchEventsBind);
     wrapperKeyboard[0].addEventListener("mousedown", touchEventsBind);
 
+
+    changeLettersBind();
     
 };
 

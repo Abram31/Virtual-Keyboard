@@ -10,21 +10,21 @@ export class keyboardWorkLogic {
         this.shift = shift;
         this.capsLock = capsLock;
         this.flagPressCtrShift = false;
-
         this.input = "";
+        this.currentButtons = [];
     }
 
-    
+
     textArea() {
         const textArea = document.getElementsByTagName("textarea")[0];
         this.input = textArea.value;
-        
+
 
     }
 
     buttonsEvents(event) {
-        buttonsHighlighting(event);
-        
+        this.buttonsHighlighting(event);
+
         if (event.code != "Delete" && event.code != "Backspace" && event.code != "Enter" && event.code != "Space") {
             event.preventDefault();
             if (event.code === "CapsLock") {
@@ -44,23 +44,24 @@ export class keyboardWorkLogic {
             this.addingSymbols(event);
 
         } else {
-            console.log("stabdart!");
-            console.log(event.code);
             this.textArea();
-            // this.addingSymbols(event);
+            this.addingSymbols(event);
+            event.preventDefault();
+
 
         }
-        
-        
-                    
-    
+
+
+
+
 
     }
 
-    addingSymbols (event) {
+    addingSymbols(event) {
+        console.log(event.code);
         const textArea = document.getElementsByTagName("textarea")[0];
         console.log(textArea);
-        if (event.code != "CapsLock" && event.code != "Tab" && event.code != "ShiftLeft" && event.code != "ShiftRight" && event.code != "ControlLeft" && event.code != "AltLeft" && event.code != "ControlRight" && event.code != "AltRight") {
+        if (event.code != "CapsLock" && event.code != "Tab" && event.code != "ShiftLeft" && event.code != "ShiftRight" && event.code != "ControlLeft" && event.code != "AltLeft" && event.code != "ControlRight" && event.code != "AltRight" && event.code != "Delete" && event.code != "Backspace" && event.code != "Enter" && event.code != "Space") {
             buttons.forEach(button => {
                 if (button.id === event.code) {
                     button.childNodes.forEach(child => {
@@ -85,32 +86,86 @@ export class keyboardWorkLogic {
                 }
             });
         } else if (event.code === "Tab") {
+            let text;
             const position = textArea.selectionStart;
-            this.input = this.input.split("");
-            this.input.splice(position, 0, "  ");
-            this.input = this.input.join("");
-            textArea.value = this.input;
+            text = textArea.value.split("");
+            text.splice(position, 0, "  ");
+            textArea.value = text.join("");
+            this.input = text.join("");
             textArea.setSelectionRange(position + 2, position + 2);
 
+        } else if (event.code === "Space") {
+            let text;
+            const position = textArea.selectionStart;
+            text = textArea.value.split("");
+            text.splice(position, 0, " ");
+            textArea.value = text.join("");
+            this.input = text.join("");
+            textArea.setSelectionRange(position + 1, position + 1);
+
+        } else if (event.code === "Backspace") {
+            let text;
+            const position = textArea.selectionStart;
+            text = textArea.value.split("");
+            text.splice(position - 1, 1);
+            textArea.value = text.join("");
+            this.input = text.join("");
+            textArea.setSelectionRange(position - 1, position - 1);
+
+        } else if (event.code === "Delete") {
+            let text;
+            const position = textArea.selectionStart;
+            text = textArea.value.split("");
+            text.splice(position, 1);
+            textArea.value = text.join("");
+            this.input = text.join("");
+            textArea.setSelectionRange(position, position);
+
+        } else if (event.code === "Enter") {
+            let text;
+            const position = textArea.selectionStart;
+            text = textArea.value.split("");
+            text.splice(position, 0, "\n");
+            textArea.value = text.join("");
+            this.input = text.join("");
+            textArea.setSelectionRange(position + 1, position + 1);
+
         }
-        
+
     }
     buttonsHighlighting(event) {
         buttons.forEach(element => {
             if (element.id === event.code) {
                 element.classList.add("animation-button-in");
+                // this.currentButtons.push(event.code)
+                // console.log(this.currentButtons);
                 // element.addEventListener("animationend", () => element.classList.remove("animation-button-in"));
+                console.log(event);
+                console.log(element);
 
                 let removeEventHighlihting = () => {
+                    // if(this.currentButtons.includes(event1.code)) {
+                    //     this.currentButtons.splice(this.currentButtons.indexOf(event.code),1)
+
                     element.classList.remove("animation-button-in");
                     element.classList.add("animation-button-out");
                     element.addEventListener("transitionend", () => {
                         element.classList.remove("animation-button-out");
                         event.target.removeEventListener("keyup", removeEventHighlihting);
                     });
+                    // }
+
+
+
                     // element.removeEventListener("keyup", removeEventHighlihting);
                 };
 
+                // element.addEventListener("transitionend",()=> {
+                //     event.target.addEventListener("keyup", ()=>{
+                //         element.classList.remove("animation-button-in");
+                //         element.classList.add("animation-button-out");
+                //     })
+                // })
                 event.target.addEventListener("keyup", removeEventHighlihting);
 
             }
@@ -137,55 +192,9 @@ export class keyboardWorkLogic {
 
         }
     }
-    changeLanguage(event) {
-        let changeLetters = () => {
-            if (this.language === "en") {
-                buttons.forEach(element => {
-                    if (element.classList.contains("button")) {
-                        const blockElementsRu = element.querySelectorAll(".letter-ru");
-                        blockElementsRu.forEach(item => {
-                            item.classList.remove("hide");
-                        });
-                        const blockElementsEn = element.querySelectorAll(".letter-en");
-                        blockElementsEn.forEach(item => {
-                            item.classList.add("hide");
-                        });
-                    }
-                });
-                document.getElementById("Backquote").querySelector(".sign").classList.add("hide");
-                // document.getElementById("Backquote").querySelector(".shift-sign-en").classList.add("hide");
-                document.getElementById("BracketLeft").firstChild.classList.add("hide");
-                document.getElementById("BracketRight").firstChild.classList.add("hide");
-                document.getElementById("Semicolon").firstChild.classList.add("hide");
-                document.getElementById("Quote").firstChild.classList.add("hide");
-                document.getElementById("Comma").firstChild.classList.add("hide");
-                document.getElementById("Period").firstChild.classList.add("hide");
 
+    changeLanguage(event = false) {
 
-                this.language = "ru";
-            } else {
-                buttons.forEach(element => {
-                    if (element.classList.contains("button")) {
-                        const blockElementsRu = element.querySelectorAll(".letter-ru");
-                        blockElementsRu.forEach(item => {
-                            item.classList.add("hide");
-                        });
-                        const blockElementsEn = element.querySelectorAll(".letter-en");
-                        blockElementsEn.forEach(item => {
-                            item.classList.remove("hide");
-                        });
-                    }
-                });
-                document.getElementById("Backquote").querySelector(".sign").classList.remove("hide");
-                document.getElementById("BracketLeft").firstChild.classList.remove("hide");
-                document.getElementById("BracketRight").firstChild.classList.remove("hide");
-                document.getElementById("Semicolon").firstChild.classList.remove("hide");
-                document.getElementById("Quote").firstChild.classList.remove("hide");
-                document.getElementById("Comma").firstChild.classList.remove("hide");
-                document.getElementById("Period").firstChild.classList.remove("hide");
-                this.language = "en";
-            }
-        };
 
         if (event.code === "ControlLeft" && this.flagPressCtrShift != "Alt") {
             this.flagPressCtrShift = "Ctrl";
@@ -194,21 +203,118 @@ export class keyboardWorkLogic {
         if ((event.code === "AltLeft" && this.flagPressCtrShift === "Ctrl")) {
             this.flagPressCtrShift = false;
             console.log("altlShift");
-            changeLetters();
+            this.changeLetters();
         }
 
         if (event.code === "AltLeft" && this.flagPressCtrShift != "Ctrl") {
             this.flagPressCtrShift = "Alt";
             event.target.addEventListener("keyup", () => this.flagPressCtrShift = false);
+
         }
         if ((event.code === "ControlLeft" && this.flagPressCtrShift === "Alt")) {
             this.flagPressCtrShift = false;
-            changeLetters();
+            this.changeLetters();
         }
     }
+    changeLetters() {
+        if (this.language === "en") {
+            buttons.forEach(element => {
+                if (element.classList.contains("button")) {
+                    const blockElementsRu = element.querySelectorAll(".letter-ru");
+                    blockElementsRu.forEach(item => {
+                        item.classList.remove("hide");
+                    });
+                    const blockElementsEn = element.querySelectorAll(".letter-en");
+                    blockElementsEn.forEach(item => {
+                        item.classList.add("hide");
+                    });
+                }
+            });
+            document.getElementById("Backquote").querySelector(".sign").classList.add("hide");
+            // document.getElementById("Backquote").querySelector(".shift-sign-en").classList.add("hide");
+            document.getElementById("BracketLeft").firstChild.classList.add("hide");
+            document.getElementById("BracketRight").firstChild.classList.add("hide");
+            document.getElementById("Semicolon").firstChild.classList.add("hide");
+            document.getElementById("Quote").firstChild.classList.add("hide");
+            document.getElementById("Comma").firstChild.classList.add("hide");
+            document.getElementById("Period").firstChild.classList.add("hide");
 
+
+            this.language = "ru";
+        } else {
+            buttons.forEach(element => {
+                if (element.classList.contains("button")) {
+                    const blockElementsRu = element.querySelectorAll(".letter-ru");
+                    blockElementsRu.forEach(item => {
+                        item.classList.add("hide");
+                    });
+                    const blockElementsEn = element.querySelectorAll(".letter-en");
+                    blockElementsEn.forEach(item => {
+                        item.classList.remove("hide");
+                    });
+                }
+            });
+            document.getElementById("Backquote").querySelector(".sign").classList.remove("hide");
+            document.getElementById("BracketLeft").firstChild.classList.remove("hide");
+            document.getElementById("BracketRight").firstChild.classList.remove("hide");
+            document.getElementById("Semicolon").firstChild.classList.remove("hide");
+            document.getElementById("Quote").firstChild.classList.remove("hide");
+            document.getElementById("Comma").firstChild.classList.remove("hide");
+            document.getElementById("Period").firstChild.classList.remove("hide");
+            this.language = "en";
+        }
+    };
+    changeLettersOnload() {
+        if (this.language === "ru") {
+            buttons.forEach(element => {
+                if (element.classList.contains("button")) {
+                    const blockElementsRu = element.querySelectorAll(".letter-ru");
+                    blockElementsRu.forEach(item => {
+                        item.classList.remove("hide");
+                    });
+                    const blockElementsEn = element.querySelectorAll(".letter-en");
+                    blockElementsEn.forEach(item => {
+                        item.classList.add("hide");
+                    });
+                }
+            });
+            document.getElementById("Backquote").querySelector(".sign").classList.add("hide");
+            // document.getElementById("Backquote").querySelector(".shift-sign-en").classList.add("hide");
+            document.getElementById("BracketLeft").firstChild.classList.add("hide");
+            document.getElementById("BracketRight").firstChild.classList.add("hide");
+            document.getElementById("Semicolon").firstChild.classList.add("hide");
+            document.getElementById("Quote").firstChild.classList.add("hide");
+            document.getElementById("Comma").firstChild.classList.add("hide");
+            document.getElementById("Period").firstChild.classList.add("hide");
+
+
+            this.language = "ru";
+        } else {
+            buttons.forEach(element => {
+                if (element.classList.contains("button")) {
+                    const blockElementsRu = element.querySelectorAll(".letter-ru");
+                    blockElementsRu.forEach(item => {
+                        item.classList.add("hide");
+                    });
+                    const blockElementsEn = element.querySelectorAll(".letter-en");
+                    blockElementsEn.forEach(item => {
+                        item.classList.remove("hide");
+                    });
+                }
+            });
+            document.getElementById("Backquote").querySelector(".sign").classList.remove("hide");
+            document.getElementById("BracketLeft").firstChild.classList.remove("hide");
+            document.getElementById("BracketRight").firstChild.classList.remove("hide");
+            document.getElementById("Semicolon").firstChild.classList.remove("hide");
+            document.getElementById("Quote").firstChild.classList.remove("hide");
+            document.getElementById("Comma").firstChild.classList.remove("hide");
+            document.getElementById("Period").firstChild.classList.remove("hide");
+            this.language = "en";
+        }
+    };
     changeShiftElements(event) {
-
+        this.language=this.language;
+console.log(this.language);
         if (this.language === "en") {
 
             const englishSigns = wrapper[0].querySelectorAll(".shift-sign-en");
@@ -219,7 +325,7 @@ export class keyboardWorkLogic {
 
             this.shift = true;
             lettersEn.forEach(element => {
-                if(this.capsLock === true) {
+                if (this.capsLock === true) {
                     element.innerText = element.innerText.toLowerCase();
                 } else {
                     element.innerText = element.innerText.toUpperCase();
@@ -254,7 +360,7 @@ export class keyboardWorkLogic {
                         }
                     });
                     lettersRu.forEach(element => {
-                        if(this.capsLock === true) {
+                        if (this.capsLock === true) {
                             element.innerText = element.innerText.toUpperCase();
 
                         } else {
@@ -385,10 +491,13 @@ export class keyboardWorkLogic {
 
 }
 
-export const keyboardWork = new keyboardWorkLogic();
+export const keyboardWork = new keyboardWorkLogic(localStorage.language);
 
 const buttonsEvents = keyboardWork.buttonsEvents;
 export const buttonsEventsBind = buttonsEvents.bind(keyboardWork);
+
+const changeLetters = keyboardWork.changeLettersOnload;
+export const changeLettersBind = changeLetters.bind(keyboardWork);
 
 export const buttonsHighlighting = keyboardWork.buttonsHighlighting;
 

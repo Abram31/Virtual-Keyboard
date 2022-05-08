@@ -8,9 +8,8 @@ export const wrapperKeyboard = document.getElementsByClassName("wrapper-keyboard
 let element;
 
 class Touch extends keyboardWorkLogic {
-    constructor(language) {
-        super(language);
-        this.language = this.language;
+    constructor() {
+        super();
     }
 
     touchEvents(event) {

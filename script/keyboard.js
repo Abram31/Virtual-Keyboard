@@ -228,6 +228,16 @@ export class keyboardWorkLogic {
                     blockElementsEn.forEach(item => {
                         item.classList.add("hide");
                     });
+                    const blockSigns = document.getElementById("Slash");
+                    blockSigns.childNodes.forEach(element => {
+                        if(element.classList.contains("sign-ru")) {
+                            element.classList.remove("hide");
+                        } else {
+                            element.classList.add("hide");
+
+                        }
+                    })
+
                 }
             });
             document.getElementById("Backquote").querySelector(".sign").classList.add("hide");
@@ -238,6 +248,8 @@ export class keyboardWorkLogic {
             document.getElementById("Quote").firstChild.classList.add("hide");
             document.getElementById("Comma").firstChild.classList.add("hide");
             document.getElementById("Period").firstChild.classList.add("hide");
+            // document.getElementById("Slash").firstChild.classList.add("hide");
+
 
 
             this.language = "ru";
@@ -252,6 +264,15 @@ export class keyboardWorkLogic {
                     blockElementsEn.forEach(item => {
                         item.classList.remove("hide");
                     });
+                    const blockSigns = document.getElementById("Slash");
+                    blockSigns.childNodes.forEach(element => {
+                        if (element.classList.contains("sign")) {
+                            element.classList.remove("hide");
+                        } else {
+                            element.classList.add("hide");
+
+                        }
+                    })
                 }
             });
             document.getElementById("Backquote").querySelector(".sign").classList.remove("hide");
@@ -261,6 +282,8 @@ export class keyboardWorkLogic {
             document.getElementById("Quote").firstChild.classList.remove("hide");
             document.getElementById("Comma").firstChild.classList.remove("hide");
             document.getElementById("Period").firstChild.classList.remove("hide");
+            // document.getElementById("Slash").firstChild.classList.remove("hide");
+
             this.language = "en";
         }
     };
@@ -278,6 +301,16 @@ export class keyboardWorkLogic {
                     });
                 }
             });
+            const blockSigns = document.getElementById("Slash");
+            blockSigns.childNodes.forEach(element => {
+                if (element.classList.contains("sign-ru")) {
+                    element.classList.remove("hide");
+                } else {
+                    element.classList.add("hide");
+
+                }
+            })
+
             document.getElementById("Backquote").querySelector(".sign").classList.add("hide");
             // document.getElementById("Backquote").querySelector(".shift-sign-en").classList.add("hide");
             document.getElementById("BracketLeft").firstChild.classList.add("hide");
@@ -302,6 +335,15 @@ export class keyboardWorkLogic {
                     });
                 }
             });
+            const blockSigns = document.getElementById("Slash");
+            blockSigns.childNodes.forEach(element => {
+                if (element.classList.contains("sign")) {
+                    element.classList.remove("hide");
+                } else {
+                    element.classList.add("hide");
+
+                }
+            })
             document.getElementById("Backquote").querySelector(".sign").classList.remove("hide");
             document.getElementById("BracketLeft").firstChild.classList.remove("hide");
             document.getElementById("BracketRight").firstChild.classList.remove("hide");
@@ -338,7 +380,17 @@ console.log(this.language);
                 } else {
                     element.innerText = element.innerText.toUpperCase();
                 }
-            });
+            }); 
+
+            const blockSigns = document.getElementById("Slash");
+            blockSigns.childNodes.forEach(element => {
+                if (element.classList.contains("shift-sign-en")) {
+                    element.classList.remove("hide");
+                } else {
+                    element.classList.add("hide");
+
+                }
+            })
 
 
 
@@ -374,7 +426,16 @@ console.log(this.language);
                         event.target.removeEventListener("keyup", caseDownAfterClick);
 
                     }
+                    blockSigns.childNodes.forEach(element => {
+                        if (element.classList.contains("sign")) {
+                            element.classList.remove("hide");
+                        } else {
+                            element.classList.add("hide");
+
+                        }
+                    })
                 }
+                
             };
             if (event.target.id === "ShiftRight" || event.target.id === "ShiftLeft") {
                 event.target.addEventListener("mouseup", caseDownAfterClick);
@@ -392,6 +453,16 @@ console.log(this.language);
             });
             const backslash = document.getElementById("Backslash");
             backslash.firstChild.classList.add("hide");
+
+            const blockSigns = document.getElementById("Slash");
+            blockSigns.childNodes.forEach(element => {
+                if (element.classList.contains("shift-sign-ru")) {
+                    element.classList.remove("hide");
+                } else {
+                    element.classList.add("hide");
+
+                }
+            })
 
 
 
@@ -460,6 +531,15 @@ console.log(this.language);
                             element.innerText = element.innerText.toLowerCase();
                         }
                     });
+                    const blockSigns = document.getElementById("Slash");
+                    blockSigns.childNodes.forEach(element => {
+                        if (element.classList.contains("sign-ru")) {
+                            element.classList.remove("hide");
+                        } else {
+                            element.classList.add("hide");
+
+                        }
+                    })
                     console.log("keyUp");
                     event.target.removeEventListener("keyup", caseDownAfterClickEn);
                 }

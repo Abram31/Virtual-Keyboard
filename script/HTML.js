@@ -128,7 +128,7 @@ const secondRow = `
     <div class="button" id = "KeyM"><span class="letter-en">m</span><span class="letter-ru hide">ь</span></div>
     <div class="button" id ="Comma"><span class="sign">,</span><span class="shift-sign-en hide"><</span><span class="letter-ru hide">б</span></div>
     <div class="button" id ="Period"><span class="sign">.</span><span class="shift-sign-en hide">></span><span class="letter-ru hide">ю</span></div>
-    <div class="button" id ="Slash"><span class="sign">/</span><span class="shift-sign-en hide">?</span></div>
+    <div class="button" id ="Slash"><span class="sign">/</span><span class="shift-sign-en hide">?</span><span class="sign-ru hide">.</span><span class="shift-sign-ru hide">,</span></div>
     <div class="button" id = "ArrowUp"><span class="button-arrow-up"></span></div>
     <div class="button right-shift" id = "ShiftRight"><span>Shift</span></div>
 </div> `;   

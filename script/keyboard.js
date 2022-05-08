@@ -1,7 +1,6 @@
 
 import { buttons, lettersEn, lettersRu } from "./main.js";
 import { wrapper } from "./HTML.js";
-// import { wrapper } from "./_HTML";
 
 export class keyboardWorkLogic {
     constructor(language = "en", shift = false, capsLock = false) {
@@ -58,9 +57,7 @@ export class keyboardWorkLogic {
     }
 
     addingSymbols(event) {
-        console.log(event.code);
         const textArea = document.getElementsByTagName("textarea")[0];
-        console.log(textArea);
         if (event.code != "CapsLock" && event.code != "Tab" && event.code != "ShiftLeft" && event.code != "ShiftRight" && event.code != "ControlLeft" && event.code != "AltLeft" && event.code != "ControlRight" && event.code != "AltRight" && event.code != "Delete" && event.code != "Backspace" && event.code != "Enter" && event.code != "Space") {
             buttons.forEach(button => {
                 if (button.id === event.code) {
@@ -79,8 +76,6 @@ export class keyboardWorkLogic {
                                 textArea.value = this.input;
                             }
                         }
-                        // console.log(child.nodeName);
-                        // console.log(child.nodeName == "#text");
 
                     });
                 }
@@ -137,16 +132,8 @@ export class keyboardWorkLogic {
         buttons.forEach(element => {
             if (element.id === event.code) {
                 element.classList.add("animation-button-in");
-                // this.currentButtons.push(event.code)
-                // console.log(this.currentButtons);
-                // element.addEventListener("animationend", () => element.classList.remove("animation-button-in"));
-                console.log(event);
-                console.log(element);
-
+   
                 let removeEventHighlihting = () => {
-                    // if(this.currentButtons.includes(event1.code)) {
-                    //     this.currentButtons.splice(this.currentButtons.indexOf(event.code),1)
-
                     element.classList.remove("animation-button-in");
                     element.classList.add("animation-button-out");
                     element.addEventListener("transitionend", () => {
@@ -157,15 +144,8 @@ export class keyboardWorkLogic {
 
 
 
-                    // element.removeEventListener("keyup", removeEventHighlihting);
                 };
 
-                // element.addEventListener("transitionend",()=> {
-                //     event.target.addEventListener("keyup", ()=>{
-                //         element.classList.remove("animation-button-in");
-                //         element.classList.add("animation-button-out");
-                //     })
-                // })
                 event.target.addEventListener("keyup", removeEventHighlihting);
 
             }
@@ -202,7 +182,6 @@ export class keyboardWorkLogic {
         }
         if ((event.code === "AltLeft" && this.flagPressCtrShift === "Ctrl")) {
             this.flagPressCtrShift = false;
-            console.log("altlShift");
             this.changeLetters();
         }
 
@@ -248,7 +227,6 @@ export class keyboardWorkLogic {
             document.getElementById("Quote").firstChild.classList.add("hide");
             document.getElementById("Comma").firstChild.classList.add("hide");
             document.getElementById("Period").firstChild.classList.add("hide");
-            // document.getElementById("Slash").firstChild.classList.add("hide");
 
 
 
@@ -282,7 +260,6 @@ export class keyboardWorkLogic {
             document.getElementById("Quote").firstChild.classList.remove("hide");
             document.getElementById("Comma").firstChild.classList.remove("hide");
             document.getElementById("Period").firstChild.classList.remove("hide");
-            // document.getElementById("Slash").firstChild.classList.remove("hide");
 
             this.language = "en";
         }
@@ -312,7 +289,6 @@ export class keyboardWorkLogic {
             })
 
             document.getElementById("Backquote").querySelector(".sign").classList.add("hide");
-            // document.getElementById("Backquote").querySelector(".shift-sign-en").classList.add("hide");
             document.getElementById("BracketLeft").firstChild.classList.add("hide");
             document.getElementById("BracketRight").firstChild.classList.add("hide");
             document.getElementById("Semicolon").firstChild.classList.add("hide");
@@ -356,7 +332,6 @@ export class keyboardWorkLogic {
     };
     changeShiftElements(event) {
         this.language=this.language;
-console.log(this.language);
         if (this.language === "en") {
 
             const englishSigns = wrapper[0].querySelectorAll(".shift-sign-en");
@@ -469,7 +444,6 @@ console.log(this.language);
             const numbers = wrapper[0].querySelectorAll(".past-number");
             numbers.forEach(item => {
                 item.classList.add("hide");
-                console.log(item.parentElement.children.length);
                 if (item.parentElement.children.length < 3) {
                     const engSign = item.parentElement.querySelector(".shift-sign-en");
                     engSign.classList.remove("hide");
@@ -507,7 +481,6 @@ console.log(this.language);
                     const numbers = wrapper[0].querySelectorAll(".past-number");
                     numbers.forEach(item => {
                         item.classList.remove("hide");
-                        console.log(item.parentElement.children.length);
                         if (item.parentElement.children.length < 3) {
                             const engSign = item.parentElement.querySelector(".shift-sign-en");
                             engSign.classList.add("hide");
@@ -540,7 +513,6 @@ console.log(this.language);
 
                         }
                     })
-                    console.log("keyUp");
                     event.target.removeEventListener("keyup", caseDownAfterClickEn);
                 }
             };

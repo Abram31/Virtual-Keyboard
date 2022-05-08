@@ -38,7 +38,6 @@ addTextArea = () => {
 
 addKeyBoard = () => {
     const wrapperKeyBoard = document.querySelector(".wrapper-text-area");
-    console.log(wrapperKeyBoard);
     const wrapperKeyBoardHTML = "<div class=\"wrapper-keyboard\"></div>";
 
     wrapper[0].insertAdjacentHTML("beforeend", wrapperKeyBoardHTML);

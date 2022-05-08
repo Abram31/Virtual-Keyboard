@@ -15,7 +15,6 @@ class Touch extends keyboardWorkLogic {
     touchEvents(event) {
         if (event.type === "click") {
             this.addLettersTextarea(event);
-            console.log(event);
             if (event.target.id === "ArrowLeft" || event.target.id === "ArrowRight" || event.target.id === "ArrowUp" || event.target.id === "ArrowDown") {
                 this.arrowOutput(event);
             }
@@ -25,7 +24,6 @@ class Touch extends keyboardWorkLogic {
         }
 
         if ((event.target.id === "ShiftRight" && event.type === "mousedown") || (event.target.id === "ShiftLeft" && event.type === "mousedown")) {
-            console.log(this.language)
             this.changeShiftElements(event);
         }
 
@@ -101,7 +99,6 @@ class Touch extends keyboardWorkLogic {
             textArea.setSelectionRange(position + 1, position + 1);
 
         }
-        console.log(event.target.id);
 
     }
 

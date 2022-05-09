@@ -1,0 +1,28 @@
+{
+  "name": "virtual-keyboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "eslint-config-rallycoding": "^3.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
+  },
+  "scripts": {
+    "lint": "eslint ./script",
+    "lint-fix": "eslint ./script --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abram31/Virtual-Keyboard.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Abram31/Virtual-Keyboard/issues"
+  },
+  "homepage": "https://github.com/Abram31/Virtual-Keyboard#readme"
+}

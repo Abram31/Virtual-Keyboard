@@ -8,12 +8,12 @@ import { buttons, lettersEn, lettersRu } from "./main.js";
 import { wrapper } from "./HTML.js";
 
 export let language = localStorage.language ? localStorage.getItem("language") : "en";
+export let capsLock = false;
 
 export class KeyboardWorkLogic {
-  constructor(shift = false, capsLock = false) {
+  constructor(shift = false) {
     this.pressKeyboard = false;
     this.shift = shift;
-    this.capsLock = capsLock;
     this.flagPressCtrShift = false;
     this.input = "";
     this.currentButtons = [];
@@ -141,22 +141,22 @@ export class KeyboardWorkLogic {
   }
 
   capsLockFunction() {
-    if (this.capsLock === true) {
+    if (capsLock === true) {
       lettersEn.forEach((element) => {
         element.innerText = element.innerText.toLowerCase();
       });
       lettersRu.forEach((element) => {
         element.innerText = element.innerText.toLowerCase();
       });
-      this.capsLock = false;
-    } else if (this.capsLock === false) {
+      capsLock = false;
+    } else if (capsLock === false) {
       lettersEn.forEach((element) => {
         element.innerText = element.innerText.toUpperCase();
       });
       lettersRu.forEach((element) => {
         element.innerText = element.innerText.toUpperCase();
       });
-      this.capsLock = true;
+      capsLock = true;
     }
   }
 
@@ -318,14 +318,14 @@ export class KeyboardWorkLogic {
 
       this.shift = true;
       lettersEn.forEach((element) => {
-        if (this.capsLock === true) {
+        if (capsLock === true) {
           element.innerText = element.innerText.toLowerCase();
         } else {
           element.innerText = element.innerText.toUpperCase();
         }
       });
       lettersRu.forEach((element) => {
-        if (this.capsLock === true) {
+        if (capsLock === true) {
           element.innerText = element.innerText.toLowerCase();
         } else {
           element.innerText = element.innerText.toUpperCase();
@@ -351,14 +351,14 @@ export class KeyboardWorkLogic {
 
           this.shift = false;
           lettersEn.forEach((element) => {
-            if (this.capsLock === true) {
+            if (capsLock === true) {
               element.innerText = element.innerText.toUpperCase();
             } else {
               element.innerText = element.innerText.toLowerCase();
             }
           });
           lettersRu.forEach((element) => {
-            if (this.capsLock === true) {
+            if (capsLock === true) {
               element.innerText = element.innerText.toUpperCase();
             } else {
               element.innerText = element.innerText.toLowerCase();
@@ -412,14 +412,14 @@ export class KeyboardWorkLogic {
       });
       this.shift = true;
       lettersEn.forEach((element) => {
-        if (this.capsLock === true) {
+        if (capsLock === true) {
           element.innerText = element.innerText.toLowerCase();
         } else {
           element.innerText = element.innerText.toUpperCase();
         }
       });
       lettersRu.forEach((element) => {
-        if (this.capsLock === true) {
+        if (capsLock === true) {
           element.innerText = element.innerText.toLowerCase();
         } else {
           element.innerText = element.innerText.toUpperCase();
@@ -447,14 +447,14 @@ export class KeyboardWorkLogic {
 
           this.shift = false;
           lettersEn.forEach((element) => {
-            if (this.capsLock === true) {
+            if (capsLock === true) {
               element.innerText = element.innerText.toUpperCase();
             } else {
               element.innerText = element.innerText.toLowerCase();
             }
           });
           lettersRu.forEach((element) => {
-            if (this.capsLock === true) {
+            if (capsLock === true) {
               element.innerText = element.innerText.toUpperCase();
             } else {
               element.innerText = element.innerText.toLowerCase();

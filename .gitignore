@@ -3,7 +3,7 @@ tsconfig.json
 node_modules
 
 
-scss
+# scss
 base.css
 package-lock.json
-package.json
+# package.json

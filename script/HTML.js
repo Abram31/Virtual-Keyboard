@@ -1,49 +1,28 @@
-const doctype = `<!DOCTYPE html>`
-const baseDocumentHtml = `
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KeyBord</title>`;
+/* eslint-disable no-useless-escape */
+/* eslint-disable class-methods-use-this */
 
-const html = document.querySelector("html");
-const head = html.querySelector("head");
-const scriptHTML = "<script type = \"module\" src = \"./script/main.js\" ></script>";
-
-const cssHTML = "<link rel=\"stylesheet\" href=\"./main.css\">";
 const body = document.querySelector("body");
-const div = document.createElement("div");
 
-export const wrapper =  body.getElementsByClassName("wrapper");
+export const wrapper = body.getElementsByClassName("wrapper");
 
 const textAreaHTML = "<textarea autofocus class = \"wrapper-text-area\" name=\"\" id=\"\" cols=\"30\" rows=\"10\"></textarea>";
 
-
-
-class addHTML {
-
- addBasicStructure = () => {
-    // html.insertAdjacentHTML("beforebegin", doctype)
-    html.lang = "en";
-    head.insertAdjacentHTML("afterbegin", baseDocumentHtml);
-    body.insertAdjacentHTML("beforeend", scriptHTML);
-    head.insertAdjacentHTML("beforeend", cssHTML);
-    head.querySelector("script").remove();
-
+class AddHTML {
+  addBasicStructure = () => {
     body.insertAdjacentHTML("afterbegin", "<div class = 'wrapper'></div>");
-};
+  };
 
-addTextArea = () => {
- wrapper[0].insertAdjacentHTML("afterbegin", textAreaHTML);
-};
+  addTextArea = () => {
+    wrapper[0].insertAdjacentHTML("afterbegin", textAreaHTML);
+  };
 
-addKeyBoard = () => {
-    const wrapperKeyBoard = document.querySelector(".wrapper-text-area");
+  addKeyBoard = () => {
     const wrapperKeyBoardHTML = "<div class=\"wrapper-keyboard\"></div>";
 
     wrapper[0].insertAdjacentHTML("beforeend", wrapperKeyBoardHTML);
 
-    const wrapperKeyBoardBlock = document.querySelector(".wrapper-keyboard");  
-     
+    const wrapperKeyBoardBlock = document.querySelector(".wrapper-keyboard");
+
     const firstRow = `
     <div class="keyboard-first-row">
     <div class="button" id = "Backquote">
@@ -70,9 +49,9 @@ addKeyBoard = () => {
     <div class="button button-backspase" id = "Backspace">Backspase</div>
 </div >`;
 
-wrapperKeyBoardBlock.insertAdjacentHTML("beforeend", firstRow );
+    wrapperKeyBoardBlock.insertAdjacentHTML("beforeend", firstRow);
 
-const secondRow = `
+    const secondRow = `
 <div class="keyboard-second-row">
 
 <div class="button button-tab" id = "Tab"><span>Tab</span></div>
@@ -130,7 +109,7 @@ const secondRow = `
     <div class="button" id ="Slash"><span class="sign">/</span><span class="shift-sign-en hide">?</span><span class="sign-ru hide">.</span><span class="shift-sign-ru hide">,</span></div>
     <div class="button" id = "ArrowUp"><span class="button-arrow-up"></span></div>
     <div class="button right-shift" id = "ShiftRight"><span>Shift</span></div>
-</div> `;   
+</div> `;
 
     wrapperKeyBoardBlock.insertAdjacentHTML("beforeend", fourthRow);
 
@@ -149,16 +128,13 @@ const secondRow = `
 
     wrapperKeyBoardBlock.insertAdjacentHTML("beforeend", fifthRow);
 
-    const changeLang =`
+    const changeLang = `
     <div class = "change-language"> Клавиатура создана в операционной системе Windows </div>
     <div class = "change-language">Смена языка осуществляется комбинацией клавиш Ctrl + Alt</div>`;
 
     wrapperKeyBoardBlock.insertAdjacentHTML("beforeend", changeLang);
-
-};
-
+  };
 }
 
-const innerHTML = new addHTML();
-export let {addBasicStructure,addTextArea, addKeyBoard} = innerHTML;
-
+const innerHTML = new AddHTML();
+export const { addBasicStructure, addTextArea, addKeyBoard } = innerHTML;
